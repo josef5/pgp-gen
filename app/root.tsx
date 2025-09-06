@@ -10,6 +10,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { useLocation } from "react-router";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -43,12 +44,29 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <>
-      <nav>
-        <NavLink to="/">Generate</NavLink>
-        <NavLink to="/encrypt">Encrypt</NavLink>
-        <NavLink to="/decrypt">Decrypt</NavLink>
+      <nav className="flex bg-neutral-200">
+        <NavLink
+          to="/"
+          className={`flex h-12 w-56 items-center justify-center ${location.pathname === "/" ? "bg-neutral-100" : ""} text-[16px]`}
+        >
+          Generate
+        </NavLink>
+        <NavLink
+          to="/encrypt"
+          className={`flex h-12 w-56 items-center justify-center ${location.pathname === "/encrypt" ? "bg-neutral-100" : ""} text-[16px]`}
+        >
+          Encrypt
+        </NavLink>
+        <NavLink
+          to="/decrypt"
+          className={`flex h-12 w-56 items-center justify-center ${location.pathname === "/decrypt" ? "bg-neutral-100" : ""} text-[16px]`}
+        >
+          Decrypt
+        </NavLink>
       </nav>
       <Outlet />
     </>
@@ -72,11 +90,11 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
+    <main className="container mx-auto p-4 pt-16">
       <h1>{message}</h1>
       <p>{details}</p>
       {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
+        <pre className="w-full overflow-x-auto p-4">
           <code>{stack}</code>
         </pre>
       )}
