@@ -2,7 +2,7 @@ import React from "react";
 
 function Encrypt() {
   return (
-    <section className="grid max-w-[1120px] grid-cols-5">
+    <section className="grid max-w-[896px] grid-cols-4">
       <div className="col-start-1 h-24"></div>
       <div className="col-start-1 flex w-56 justify-start">
         <label
