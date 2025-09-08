@@ -12,7 +12,7 @@ function Encrypt() {
       </label>
       <textarea
         id="message"
-        className="focus:border-brand focus:ring-brand bg-background-secondary col-span-3 col-start-2 h-48 rounded-none border border-none px-5 py-2 text-base focus:ring-1 focus:outline-none"
+        className="bg-background-secondary col-span-3 col-start-2 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:bg-neutral-50 focus:outline-none"
         placeholder="Paste here"
       />
       <div className="col-start-1 h-12"></div>
@@ -24,7 +24,7 @@ function Encrypt() {
       </label>
       <textarea
         id="public-key"
-        className="focus:border-brand focus:ring-brand bg-background-secondary col-span-3 col-start-2 h-48 rounded-none border border-none px-5 py-2 text-base focus:ring-1 focus:outline-none"
+        className="bg-background-secondary col-span-3 col-start-2 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:bg-neutral-50 focus:outline-none"
         placeholder="Paste here"
       />
       <div className="col-span-2 col-start-1 h-12"></div>
