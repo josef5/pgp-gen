@@ -25,7 +25,7 @@ function NavBar() {
       >
         Decrypt
       </NavLink>
-      <div className="mr-4 w-56"></div>
+      <div className="mr-4 hidden w-56 md:inline-block"></div>
     </nav>
   );
 }
