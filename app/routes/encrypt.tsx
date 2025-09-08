@@ -6,7 +6,7 @@ function Encrypt() {
       <div className="col-start-1 h-24"></div>
       <label
         htmlFor="public-key"
-        className="text-brand col-start-1 ml-8 flex w-56 justify-start text-right text-xl"
+        className="text-brand col-start-1 ml-8 flex justify-start text-right text-xl"
       >
         message
       </label>
@@ -18,7 +18,7 @@ function Encrypt() {
       <div className="col-start-1 h-12"></div>
       <label
         htmlFor="public-key"
-        className="text-brand col-start-1 ml-8 flex w-56 justify-start text-xl"
+        className="text-brand col-start-1 ml-8 flex justify-start text-xl"
       >
         public key
       </label>
@@ -28,7 +28,7 @@ function Encrypt() {
         placeholder="Paste here"
       />
       <div className="col-span-2 col-start-1 h-12"></div>
-      <button className="border-foreground-secondary text-foreground-secondary active:bg-background-secondary hover:border-hover col-span-3 col-start-2 h-10 w-full cursor-pointer border-1 active:border-none">
+      <button className="border-foreground-secondary text-foreground-secondary active:bg-background-secondary hover:border-hover col-span-3 col-start-2 h-10 cursor-pointer border-1 active:border-none">
         Encrypt
       </button>
     </section>
