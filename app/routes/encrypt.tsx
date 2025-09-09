@@ -46,6 +46,8 @@ function Encrypt() {
     }
   }, [formState.isSubmitSuccessful, reset]);
 
+  const isDisabled = !(formState.isDirty && formState.isValid);
+
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)}>
