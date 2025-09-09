@@ -69,27 +69,31 @@ function Encrypt() {
           <div className="col-span-2 col-start-1 h-12"></div>
           <button
             type="submit"
-            className="border-foreground-secondary text-foreground-secondary active:bg-background-secondary hover:border-hover col-span-full h-10 cursor-pointer border-1 active:border-none md:col-start-2"
+            className="border-foreground-secondary text-foreground-secondary active:bg-background-secondary hover:border-hover disabled:hover:border-foreground-secondary disabled:active:bg-background disabled:active:border-foreground-secondary col-span-full h-10 cursor-pointer border-1 active:border-none disabled:cursor-default disabled:opacity-25 disabled:active:border-solid md:col-start-2"
+            disabled={isDisabled}
           >
             Encrypt
           </button>
           <div className="col-span-full col-start-1 h-12"></div>
           {errorMessage && (
-            <div className="col-span-full col-start-2 bg-red-100 px-5 py-2 text-red-700">
-              {errorMessage}
-            </div>
+            <>
+              <div className="col-span-full bg-red-100 px-5 py-2 text-red-700 md:col-start-2">
+                {errorMessage}
+              </div>
+              <div className="col-span-full col-start-1 h-12"></div>
+            </>
           )}
           {encryptedMessage && (
             <>
               <h3 className="text-brand col-span-3 col-start-1 mb-2 flex justify-start text-right text-xl md:col-span-1 md:ml-8">
                 encrypted
               </h3>
-              <div className="col-span-3 col-start-1 box-border h-48 rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap">
+              <div className="col-span-3 col-start-1 box-border rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap">
                 {encryptedMessage}
               </div>
             </>
           )}
-          <div className="col-span-2 col-start-1 h-12"></div>
+          <div className="col-span-full col-start-1 h-12"></div>
         </div>
       </form>
     </section>
