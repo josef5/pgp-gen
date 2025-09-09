@@ -1,13 +1,17 @@
+import * as openpgp from "openpgp";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import TextareaCombo from "~/components/textarea-combo";
 
 function Encrypt() {
+  const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
+
   const { register, handleSubmit } = useForm<{
     message: string;
     publicKey: string;
   }>();
 
-  function onSubmit({
+  async function onSubmit({
     message,
     publicKey,
   }: {
@@ -15,6 +19,18 @@ function Encrypt() {
     publicKey: string;
   }) {
     console.log({ message, publicKey });
+    try {
+      const publicKeyObj = await openpgp.key.readArmored(publicKey);
+
+      const { data: encrypted } = await openpgp.encrypt({
+        message: openpgp.message.fromText(message),
+        publicKeys: publicKeyObj.keys,
+      });
+
+      setEncryptedMessage(encrypted);
+    } catch (error) {
+      console.error("Encryption failed:", error);
+    }
   }
 
   return (
@@ -42,6 +58,13 @@ function Encrypt() {
           >
             Encrypt
           </button>
+          <div className="col-span-2 col-start-1 h-12"></div>
+          {encryptedMessage && (
+            <div className="bg-background-secondary col-span-full col-start-2 px-5 py-2">
+              {encryptedMessage}
+            </div>
+          )}
+          <div className="col-span-2 col-start-1 h-12"></div>
         </div>
       </form>
     </section>
