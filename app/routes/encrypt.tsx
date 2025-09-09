@@ -71,9 +71,14 @@ function Encrypt() {
             </div>
           )}
           {encryptedMessage && (
-            <div className="bg-background-secondary col-span-full col-start-2 px-5 py-2">
-              {encryptedMessage}
-            </div>
+            <>
+              <h3 className="text-brand col-span-3 col-start-1 mb-2 flex justify-start text-right text-xl md:col-span-1 md:ml-8">
+                encrypted
+              </h3>
+              <div className="col-span-3 col-start-1 box-border h-48 rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap">
+                {encryptedMessage}
+              </div>
+            </>
           )}
           <div className="col-span-2 col-start-1 h-12"></div>
         </div>
