@@ -5,6 +5,7 @@ import TextareaCombo from "~/components/textarea-combo";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { register, handleSubmit } = useForm<{
     message: string;
@@ -18,7 +19,9 @@ function Encrypt() {
     message: string;
     publicKey: string;
   }) {
-    console.log({ message, publicKey });
+    setEncryptedMessage(null);
+    setErrorMessage(null);
+
     try {
       const publicKeyObj = await openpgp.key.readArmored(publicKey);
 
@@ -29,7 +32,10 @@ function Encrypt() {
 
       setEncryptedMessage(encrypted);
     } catch (error) {
-      console.error("Encryption failed:", error);
+      const errorText = error instanceof Error ? error.message : String(error);
+
+      console.error(errorText);
+      setErrorMessage(`Encryption failed. ${errorText}`);
     }
   }
 
@@ -58,7 +64,12 @@ function Encrypt() {
           >
             Encrypt
           </button>
-          <div className="col-span-2 col-start-1 h-12"></div>
+          <div className="col-span-full col-start-1 h-12"></div>
+          {errorMessage && (
+            <div className="col-span-full col-start-2 bg-red-100 px-5 py-2 text-red-700">
+              {errorMessage}
+            </div>
+          )}
           {encryptedMessage && (
             <div className="bg-background-secondary col-span-full col-start-2 px-5 py-2">
               {encryptedMessage}
