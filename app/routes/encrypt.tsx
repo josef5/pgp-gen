@@ -42,14 +42,14 @@ function Encrypt() {
             label="message"
             id="message"
             placeholder="Paste here"
-            {...register("message")}
+            {...register("message", { required: true })}
           />
           <div className="col-span-full col-start-1 h-12"></div>
           <TextareaCombo
             label="public key"
             id="public-key"
             placeholder="Paste here"
-            {...register("publicKey")}
+            {...register("publicKey", { required: true })}
           />
           <div className="col-span-2 col-start-1 h-12"></div>
           <button
