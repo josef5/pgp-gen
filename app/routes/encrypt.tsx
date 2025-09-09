@@ -1,5 +1,5 @@
 import * as openpgp from "openpgp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import TextareaCombo from "~/components/textarea-combo";
 
@@ -7,7 +7,7 @@ function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const { register, handleSubmit } = useForm<{
+  const { register, handleSubmit, formState, reset } = useForm<{
     message: string;
     publicKey: string;
   }>();
@@ -38,6 +38,13 @@ function Encrypt() {
       setErrorMessage(`Encryption failed. ${errorText}`);
     }
   }
+
+  // Reset form after successful submission
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset(undefined, { keepValues: true });
+    }
+  }, [formState.isSubmitSuccessful, reset]);
 
   return (
     <section>
