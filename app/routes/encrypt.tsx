@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Textarea from "@/components/textarea";
 import Textbox from "@/components/textbox";
+import Button from "@/components/button";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
@@ -80,13 +81,12 @@ function Encrypt() {
             {...register("publicKey", { required: true })}
           />
           <div className="col-span-2 col-start-1 h-12"></div>
-          <button
+          <Button
             type="submit"
-            className="border-foreground-secondary text-foreground-secondary active:bg-background-secondary hover:border-hover disabled:hover:border-foreground-secondary disabled:active:bg-background disabled:active:border-foreground-secondary col-span-full h-10 cursor-pointer border-1 active:border-none disabled:cursor-default disabled:opacity-25 disabled:active:border-solid md:col-start-2"
+            label="Encrypt"
+            className="col-span-full md:col-start-2"
             disabled={isDisabled}
-          >
-            Encrypt
-          </button>
+          />
           <div className="col-span-full col-start-1 h-12"></div>
           {errorMessage && (
             <>
