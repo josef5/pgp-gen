@@ -1,6 +1,6 @@
 import React from "react";
 
-function TextareaCombo({
+function Textarea({
   label,
   id,
   placeholder,
@@ -29,4 +29,4 @@ function TextareaCombo({
   );
 }
 
-export default TextareaCombo;
+export default Textarea;

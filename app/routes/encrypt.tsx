@@ -1,7 +1,7 @@
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import TextareaCombo from "~/components/textarea-combo";
+import Textarea from "~/components/textarea";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
@@ -62,14 +62,14 @@ function Encrypt() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mr-4 ml-4 grid max-w-[896px] grid-cols-3 md:ml-0 md:grid-cols-4">
           <div className="col-span-full col-start-1 h-24"></div>
-          <TextareaCombo
+          <Textarea
             label="message"
             id="message"
             placeholder="Paste here"
             {...register("message", { required: true })}
           />
           <div className="col-span-full col-start-1 h-12"></div>
-          <TextareaCombo
+          <Textarea
             label="public key"
             id="public-key"
             placeholder="Paste here"
