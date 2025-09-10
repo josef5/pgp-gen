@@ -1,9 +1,11 @@
 import React from "react";
+import { cn } from "@/lib/utils";
 
 function Textarea({
   label,
   id,
   placeholder,
+  className,
   ...props
 }: {
   label: string;
@@ -21,7 +23,10 @@ function Textarea({
       </label>
       <textarea
         id={id}
-        className="bg-background-secondary focus:bg-background-tertiary col-span-3 col-start-1 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:outline-none md:col-start-2"
+        className={cn(
+          "bg-background-secondary focus:bg-background-tertiary col-span-3 col-start-1 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:outline-none md:col-start-2",
+          className,
+        )}
         placeholder={placeholder}
         {...props}
       />
