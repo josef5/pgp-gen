@@ -1,7 +1,8 @@
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import Textarea from "~/components/textarea";
+import Textarea from "@/components/textarea";
+import Textbox from "@/components/textbox";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
