@@ -21,7 +21,7 @@ function Textarea({
       </label>
       <textarea
         id={id}
-        className="bg-background-secondary col-span-3 col-start-1 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:bg-neutral-50 focus:outline-none md:col-start-2"
+        className="bg-background-secondary focus:bg-background-tertiary col-span-3 col-start-1 box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:outline-none md:col-start-2"
         placeholder={placeholder}
         {...props}
       />

@@ -100,7 +100,7 @@ function Encrypt() {
               </h3>
               <div
                 ref={messageRef}
-                className="col-span-3 col-start-1 box-border rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap"
+                className="bg-background-tertiary col-span-3 col-start-1 box-border rounded-none border-none px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap"
               >
                 {encryptedMessage}
               </div>
