@@ -1,16 +1,21 @@
 import { cn } from "@/lib/utils";
+import { useRef } from "react";
 
 function Textbox({
   label,
   text,
   className,
+  isCopyable,
   ...props
 }: {
   label?: string;
   text: string;
   className?: string;
+  isCopyable?: boolean;
   [key: string]: any;
 }) {
+  const copiedOverlayRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       {label && (
@@ -20,12 +25,35 @@ function Textbox({
       )}
       <div
         className={cn(
-          "bg-background-tertiary col-span-3 col-start-1 box-border rounded-none border-none px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap",
+          "bg-background-tertiary relative col-span-3 col-start-1 box-border break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap",
           className,
         )}
+        onClick={() => {
+          if (text && isCopyable) {
+            navigator.clipboard.writeText(text);
+
+            if (copiedOverlayRef.current) {
+              copiedOverlayRef.current.style.opacity = "1";
+
+              setTimeout(() => {
+                if (copiedOverlayRef.current) {
+                  copiedOverlayRef.current.style.opacity = "0";
+                }
+              }, 1000);
+            }
+          }
+        }}
         {...props}
       >
-        {text}
+        {isCopyable && (
+          <div
+            ref={copiedOverlayRef}
+            className="absolute flex h-full w-full items-center justify-center bg-black/50 text-2xl text-white opacity-0 transition-opacity duration-300 ease-in-out"
+          >
+            copied
+          </div>
+        )}
+        <div className="px-5 py-2 text-base">{text}</div>
       </div>
     </>
   );
