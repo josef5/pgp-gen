@@ -74,6 +74,9 @@ function Encrypt() {
             label="public key"
             id="public-key"
             placeholder="Paste here"
+            autoCorrect="off"
+            autoCapitalize="none"
+            spellCheck="false"
             {...register("publicKey", { required: true })}
           />
           <div className="col-span-2 col-start-1 h-12"></div>
