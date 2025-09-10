@@ -1,11 +1,12 @@
 import * as openpgp from "openpgp";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import TextareaCombo from "~/components/textarea-combo";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const messageRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, formState, reset } = useForm<{
     message: string;
@@ -29,6 +30,14 @@ function Encrypt() {
         message: openpgp.message.fromText(message),
         publicKeys: publicKeyObj.keys,
       });
+
+      // Scroll to the encrypted message
+      setTimeout(() => {
+        window.scrollTo({
+          top: messageRef.current?.offsetTop ?? 0,
+          behavior: "smooth",
+        });
+      }, 100);
 
       setEncryptedMessage(encrypted);
     } catch (error) {
@@ -75,6 +84,7 @@ function Encrypt() {
             Encrypt
           </button>
           <div className="col-span-full col-start-1 h-12"></div>
+
           {errorMessage && (
             <>
               <div className="col-span-full bg-red-100 px-5 py-2 text-red-700 md:col-start-2">
@@ -88,7 +98,10 @@ function Encrypt() {
               <h3 className="text-brand col-span-3 col-start-1 mb-2 flex justify-start text-right text-xl md:col-span-1 md:ml-8">
                 encrypted
               </h3>
-              <div className="col-span-3 col-start-1 box-border rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap">
+              <div
+                ref={messageRef}
+                className="col-span-3 col-start-1 box-border rounded-none border-none bg-neutral-50 px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap"
+              >
                 {encryptedMessage}
               </div>
             </>
