@@ -32,7 +32,7 @@ function Encrypt() {
         publicKeys: publicKeyObj.keys,
       });
 
-      // Scroll to the encrypted message
+      // Scroll to the results
       setTimeout(() => {
         window.scrollTo({
           top: messageRef.current?.offsetTop ?? 0,
@@ -88,27 +88,17 @@ function Encrypt() {
             Encrypt
           </button>
           <div className="col-span-full col-start-1 h-12"></div>
-
           {errorMessage && (
             <>
-              <div className="col-span-full bg-red-100 px-5 py-2 text-red-700 md:col-start-2">
-                {errorMessage}
-              </div>
+              <Textbox
+                text={errorMessage}
+                className="text-foreground-error bg-background-error"
+              />
               <div className="col-span-full col-start-1 h-12"></div>
             </>
           )}
           {encryptedMessage && (
-            <>
-              <h3 className="text-brand col-span-3 col-start-1 mb-2 flex justify-start text-right text-xl md:col-span-1 md:ml-8">
-                encrypted
-              </h3>
-              <div
-                ref={messageRef}
-                className="bg-background-tertiary col-span-3 col-start-1 box-border rounded-none border-none px-5 py-2 text-base break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap"
-              >
-                {encryptedMessage}
-              </div>
-            </>
+            <Textbox label="encrypted" text={encryptedMessage} isCopyable />
           )}
           <div className="col-span-full col-start-1 h-12"></div>
         </div>
