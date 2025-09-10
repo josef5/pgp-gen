@@ -87,7 +87,10 @@ function Encrypt() {
             className="col-span-full md:col-start-2"
             disabled={isDisabled}
           />
-          <div className="col-span-full col-start-1 h-12"></div>
+          <div
+            ref={messageRef}
+            className="col-span-full col-start-1 h-12"
+          ></div>
           {errorMessage && (
             <>
               <Textbox
