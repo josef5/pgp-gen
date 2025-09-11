@@ -3,10 +3,12 @@ import { cn } from "@/lib/utils";
 function Button({
   label,
   className,
+  children,
   ...props
 }: {
-  label: string;
+  label?: string;
   className?: string;
+  children?: React.ReactNode;
   [key: string]: any;
 }) {
   return (
@@ -18,7 +20,7 @@ function Button({
       )}
       {...props}
     >
-      {label}
+      {children ?? label}
     </button>
   );
 }
