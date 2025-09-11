@@ -1,11 +1,13 @@
 import { cn } from "@/lib/utils";
 
 function Label({
-  label,
+  text,
+  children,
   className,
   ...props
 }: {
-  label: string;
+  text?: string;
+  children?: React.ReactNode;
   className?: string;
   [key: string]: any;
 }) {
@@ -17,7 +19,7 @@ function Label({
       )}
       {...props}
     >
-      {label}
+      {children ?? text}
     </label>
   );
 }
