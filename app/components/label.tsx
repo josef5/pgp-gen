@@ -13,10 +13,7 @@ function Label({
 }) {
   return (
     <label
-      className={cn(
-        "text-brand flex justify-start text-right text-xl",
-        className,
-      )}
+      className={cn("text-brand flex justify-start text-xl", className)}
       {...props}
     >
       {children ?? text}
