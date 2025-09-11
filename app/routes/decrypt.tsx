@@ -15,6 +15,7 @@ type DecryptFormData = {
 function Decrypt() {
   const [decryptedMessage, setDecryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isDecrypting, setIsDecrypting] = useState(false);
   const messageRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, formState, reset } =
@@ -27,6 +28,7 @@ function Decrypt() {
   }: DecryptFormData) {
     setDecryptedMessage(null);
     setErrorMessage(null);
+    setIsDecrypting(true);
 
     try {
       const privateKeyObj = await openpgp.key.readArmored(privateKey);
@@ -57,6 +59,8 @@ function Decrypt() {
 
       console.error(errorText);
       setErrorMessage(`Encryption failed. ${errorText}`);
+    } finally {
+      setIsDecrypting(false);
     }
   }
 
@@ -134,6 +138,14 @@ function Decrypt() {
             ref={messageRef}
             className="col-span-full col-start-1 h-12"
           ></div>
+          {isDecrypting && (
+            <>
+              <Textbox className="col-span-3 col-start-1 md:col-start-2">
+                Decrypting...
+              </Textbox>
+              <div className="col-span-full col-start-1 h-12"></div>
+            </>
+          )}
           {errorMessage && (
             <>
               <Textbox className="text-foreground-error bg-background-error col-span-3 col-start-1 md:col-start-2">
