@@ -2,17 +2,18 @@ import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
 function Textbox({
-  text,
   className,
   isCopyable,
+  children,
   ...props
 }: {
-  text: string;
   className?: string;
   isCopyable?: boolean;
+  children?: React.ReactNode;
   [key: string]: any;
 }) {
   const copiedOverlayRef = useRef<HTMLDivElement>(null);
+  const text = String(children);
 
   return (
     <>
@@ -47,7 +48,7 @@ function Textbox({
             copied
           </div>
         )}
-        <div className="px-5 py-2 text-base">{text}</div>
+        <div className="px-5 py-2 text-base">{children}</div>
       </div>
     </>
   );
