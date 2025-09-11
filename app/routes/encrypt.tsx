@@ -6,23 +6,20 @@ import Textbox from "@/components/textbox";
 import Button from "@/components/button";
 import Label from "@/components/label";
 
+type EncryptFormData = {
+  message: string;
+  publicKey: string;
+};
+
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const messageRef = useRef<HTMLDivElement>(null);
 
-  const { register, handleSubmit, formState, reset } = useForm<{
-    message: string;
-    publicKey: string;
-  }>();
+  const { register, handleSubmit, formState, reset } =
+    useForm<EncryptFormData>();
 
-  async function onSubmit({
-    message,
-    publicKey,
-  }: {
-    message: string;
-    publicKey: string;
-  }) {
+  async function onSubmit({ message, publicKey }: EncryptFormData) {
     setEncryptedMessage(null);
     setErrorMessage(null);
 
@@ -93,7 +90,7 @@ function Encrypt() {
             spellCheck="false"
             {...register("publicKey", { required: true })}
           />
-          <div className="col-span-2 col-start-1 h-12"></div>
+          <div className="col-span-full col-start-1 h-12"></div>
           <Button
             type="submit"
             className="col-span-full md:col-start-2"
