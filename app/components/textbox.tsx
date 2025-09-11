@@ -2,13 +2,11 @@ import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
 function Textbox({
-  label,
   text,
   className,
   isCopyable,
   ...props
 }: {
-  label?: string;
   text: string;
   className?: string;
   isCopyable?: boolean;
@@ -18,14 +16,9 @@ function Textbox({
 
   return (
     <>
-      {label && (
-        <h3 className="text-brand col-span-3 col-start-1 mb-2 flex justify-start text-right text-xl md:col-span-1 md:ml-8">
-          {label}
-        </h3>
-      )}
       <div
         className={cn(
-          "bg-background-tertiary relative col-span-3 col-start-1 box-border break-words focus:border-2 focus:outline-none md:col-start-2 md:whitespace-pre-wrap",
+          "bg-background-tertiary relative box-border focus:border-2 focus:outline-none md:whitespace-pre-wrap",
           className,
         )}
         onClick={() => {
@@ -45,10 +38,11 @@ function Textbox({
         }}
         {...props}
       >
+        {/* Overlay for copy confirmation */}
         {isCopyable && (
           <div
             ref={copiedOverlayRef}
-            className="absolute flex h-full w-full items-center justify-center bg-black/50 text-2xl text-white opacity-0 transition-opacity duration-300 ease-in-out"
+            className="text-background-tertiary bg-foreground/75 absolute flex h-full w-full items-center justify-center text-2xl opacity-0 transition-opacity duration-300"
           >
             copied
           </div>
