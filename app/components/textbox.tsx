@@ -19,7 +19,7 @@ function Textbox({
     <>
       <div
         className={cn(
-          "bg-background-tertiary relative box-border focus:border-2 focus:outline-none md:whitespace-pre-wrap",
+          "bg-background-tertiary relative box-border break-words whitespace-pre-wrap focus:border-2 focus:outline-none",
           className,
         )}
         onClick={() => {
