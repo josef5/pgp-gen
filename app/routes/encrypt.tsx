@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Textarea from "@/components/textarea";
 import Textbox from "@/components/textbox";
 import Button from "@/components/button";
+import Label from "@/components/label";
 
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
@@ -64,17 +65,29 @@ function Encrypt() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mr-4 ml-4 grid max-w-[896px] grid-cols-3 md:ml-0 md:grid-cols-4">
           <div className="col-span-full col-start-1 h-24"></div>
+          <Label
+            htmlFor="message"
+            className="col-span-3 col-start-1 mb-2 md:col-span-1 md:ml-8"
+          >
+            message
+          </Label>
           <Textarea
-            label="message"
             id="message"
             placeholder="Paste here"
+            className="col-span-3 col-start-1 md:col-start-2"
             {...register("message", { required: true })}
           />
           <div className="col-span-full col-start-1 h-12"></div>
+          <Label
+            htmlFor="public-key"
+            className="col-span-3 col-start-1 mb-2 md:col-span-1 md:ml-8"
+          >
+            public key
+          </Label>
           <Textarea
-            label="public key"
             id="public-key"
             placeholder="Paste here"
+            className="col-span-3 col-start-1 md:col-start-2"
             autoCorrect="off"
             autoCapitalize="none"
             spellCheck="false"
@@ -83,25 +96,35 @@ function Encrypt() {
           <div className="col-span-2 col-start-1 h-12"></div>
           <Button
             type="submit"
-            label="Encrypt"
             className="col-span-full md:col-start-2"
             disabled={isDisabled}
-          />
+          >
+            Encrypt
+          </Button>
           <div
             ref={messageRef}
             className="col-span-full col-start-1 h-12"
           ></div>
           {errorMessage && (
             <>
-              <Textbox
-                text={errorMessage}
-                className="text-foreground-error bg-background-error"
-              />
+              <Textbox className="text-foreground-error bg-background-error col-span-3 col-start-1 md:col-start-2">
+                {errorMessage}
+              </Textbox>
               <div className="col-span-full col-start-1 h-12"></div>
             </>
           )}
           {encryptedMessage && (
-            <Textbox label="encrypted" text={encryptedMessage} isCopyable />
+            <>
+              <Label className="col-span-3 col-start-1 mb-2 md:col-span-1 md:ml-8">
+                encrypted
+              </Label>
+              <Textbox
+                className="col-span-3 col-start-1 md:col-start-2"
+                isCopyable
+              >
+                {encryptedMessage}
+              </Textbox>
+            </>
           )}
           <div className="col-span-full col-start-1 h-12"></div>
         </div>
