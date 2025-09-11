@@ -1,4 +1,5 @@
 import Button from "@/components/button";
+import Input from "@/components/input";
 import Label from "@/components/label";
 import Textarea from "@/components/textarea";
 import Textbox from "@/components/textbox";
@@ -116,14 +117,14 @@ function Decrypt() {
           >
             passphrase?
           </Label>
-          <input
+          <Input
             id="passphrase"
             type="password"
             placeholder="Type here"
-            className="bg-background-secondary focus:bg-background-tertiary col-span-3 col-start-1 box-border h-10 border-none px-5 py-2 text-base focus:border-2 focus:outline-none md:col-start-2"
             autoCorrect="off"
             autoCapitalize="none"
             spellCheck="false"
+            className="col-span-3 col-start-1 md:col-start-2"
             {...register("passphrase", { required: false })}
           />
           <div className="col-span-full col-start-1 h-12"></div>
