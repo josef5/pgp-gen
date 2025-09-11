@@ -26,7 +26,7 @@ function Encrypt() {
     try {
       const publicKeyObj = await openpgp.key.readArmored(publicKey);
 
-      const { data: encrypted } = await openpgp.encrypt({
+      const { data } = await openpgp.encrypt({
         message: openpgp.message.fromText(message),
         publicKeys: publicKeyObj.keys,
       });
@@ -39,7 +39,7 @@ function Encrypt() {
         });
       }, 100);
 
-      setEncryptedMessage(encrypted);
+      setEncryptedMessage(data);
     } catch (error) {
       const errorText = error instanceof Error ? error.message : String(error);
 
