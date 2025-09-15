@@ -14,6 +14,7 @@ type EncryptFormData = {
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isEncrypting, setIsEncrypting] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, formState, reset } =
@@ -22,6 +23,7 @@ function Encrypt() {
   async function onSubmit({ message, publicKey }: EncryptFormData) {
     setEncryptedMessage(null);
     setErrorMessage(null);
+    setIsEncrypting(true);
 
     try {
       const publicKeyObj = await openpgp.key.readArmored(publicKey);
@@ -45,6 +47,8 @@ function Encrypt() {
 
       console.error(errorText);
       setErrorMessage(`Encryption failed. ${errorText}`);
+    } finally {
+      setIsEncrypting(false);
     }
   }
 
@@ -102,6 +106,14 @@ function Encrypt() {
             ref={resultsRef}
             className="col-span-full col-start-1 h-12"
           ></div>
+          {isEncrypting && (
+            <>
+              <Textbox className="col-span-3 col-start-1 md:col-start-2">
+                Encrypting...
+              </Textbox>
+              <div className="col-span-full col-start-1 h-12"></div>
+            </>
+          )}
           {errorMessage && (
             <>
               <Textbox className="text-foreground-error bg-background-error col-span-3 col-start-1 md:col-start-2">
