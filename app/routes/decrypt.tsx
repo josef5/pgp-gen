@@ -17,7 +17,7 @@ function Decrypt() {
   const [decryptedMessage, setDecryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isDecrypting, setIsDecrypting] = useState(false);
-  const messageRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, formState, reset } =
     useForm<DecryptFormData>();
@@ -49,7 +49,7 @@ function Decrypt() {
       // Scroll to the results
       setTimeout(() => {
         window.scrollTo({
-          top: messageRef.current?.offsetTop ?? 0,
+          top: resultsRef.current?.offsetTop ?? 0,
           behavior: "smooth",
         });
       }, 100);
@@ -136,7 +136,7 @@ function Decrypt() {
             Decrypt
           </Button>
           <div
-            ref={messageRef}
+            ref={resultsRef}
             className="col-span-full col-start-1 h-12"
           ></div>
           {isDecrypting && (

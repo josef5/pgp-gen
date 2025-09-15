@@ -14,7 +14,7 @@ type EncryptFormData = {
 function Encrypt() {
   const [encryptedMessage, setEncryptedMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const messageRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const { register, handleSubmit, formState, reset } =
     useForm<EncryptFormData>();
@@ -34,7 +34,7 @@ function Encrypt() {
       // Scroll to the results
       setTimeout(() => {
         window.scrollTo({
-          top: messageRef.current?.offsetTop ?? 0,
+          top: resultsRef.current?.offsetTop ?? 0,
           behavior: "smooth",
         });
       }, 100);
@@ -99,7 +99,7 @@ function Encrypt() {
             Encrypt
           </Button>
           <div
-            ref={messageRef}
+            ref={resultsRef}
             className="col-span-full col-start-1 h-12"
           ></div>
           {errorMessage && (
