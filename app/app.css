@@ -3,8 +3,8 @@
 @theme {
   --font-sans: "Space Mono", ui-monospace, monospace;
 
-  --color-background: theme("colors.neutral.100");
-  --color-background-secondary: theme("colors.neutral.200");
+  --color-background: theme("colors.neutral.200");
+  --color-background-secondary: theme("colors.neutral.300");
   --color-background-tertiary: theme("colors.neutral.50");
   --color-background-error: theme("colors.red.100");
   --color-foreground: theme("colors.neutral.900");
@@ -23,8 +23,8 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0px 1000px var(--color-background-secondary) inset;
-  box-shadow: 0 0 0px 1000px var(--color-background-secondary) inset;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-background-tertiary) inset;
+  box-shadow: 0 0 0px 1000px var(--color-background-tertiary) inset;
 }
 
 :root {
