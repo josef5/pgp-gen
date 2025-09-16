@@ -1,19 +1,18 @@
 import Button from "@/components/button";
 import Input from "@/components/input";
 import Label from "@/components/label";
-import Textarea from "@/components/textarea";
 import Textbox from "@/components/textbox";
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-/* import type { Route } from "./+types/home";
+import type { Route } from "./+types/generate";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "PGP Gen - Key Generation" },
+    { name: "description", content: "Key generation tool" },
   ];
-} */
+}
 
 type KeyPair = {
   privateKey: string;
