@@ -4,6 +4,6 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  base: "/pgp-gen/",
+  // base: "/pgp-gen",
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 });
