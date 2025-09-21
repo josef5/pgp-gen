@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
 
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./src/*"]
     },
 
     /* Linting */
@@ -27,5 +27,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["app"]
+  "include": ["src"]
 }
