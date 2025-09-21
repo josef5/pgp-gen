@@ -1,12 +1,3 @@
-import type { Route } from "./+types/404";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "PGP Gen - 404 Not Found" },
-    { name: "description", content: "Page not found" },
-  ];
-}
-
 function NotFound() {
   return (
     <section>

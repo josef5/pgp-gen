@@ -5,14 +5,6 @@ import Textbox from "@/components/textbox";
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import type { Route } from "./+types/generate";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "PGP Gen - Key Generation" },
-    { name: "description", content: "Key generation tool" },
-  ];
-}
 
 type KeyPair = {
   privateKey: string;
