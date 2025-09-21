@@ -5,14 +5,6 @@ import Textbox from "@/components/textbox";
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import type { Route } from "./+types/encrypt";
-
-export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "PGP Gen - Message Encryption" },
-    { name: "description", content: "Message encryption tool" },
-  ];
-}
 
 type EncryptFormData = {
   message: string;
