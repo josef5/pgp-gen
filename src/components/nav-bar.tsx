@@ -1,6 +1,4 @@
-import React from "react";
-import { NavLink } from "react-router";
-import { useLocation } from "react-router";
+import { NavLink, useLocation } from "react-router";
 
 function NavBar() {
   const location = useLocation();
