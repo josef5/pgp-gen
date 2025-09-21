@@ -1,1 +1,0 @@
-import{p as e}from"./chunk-PVWAREVJ-XSx8T8tY.js";import{c as t}from"./index.esm-Dj_4ZMYr.js";function s({className:r,...o}){return e.jsx("textarea",{className:t("bg-background-tertiary focus:bg-background-tertiary box-border h-48 rounded-none border-none px-5 py-2 text-base focus:border-2 focus:outline-none",r),...o})}export{s as T};

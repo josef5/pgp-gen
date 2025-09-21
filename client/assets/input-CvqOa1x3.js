@@ -1,1 +1,0 @@
-import{p as t}from"./chunk-PVWAREVJ-XSx8T8tY.js";import{c as e}from"./index.esm-Dj_4ZMYr.js";function u({className:r,...o}){return t.jsx("input",{className:e("bg-background-tertiary focus:bg-background-tertiary box-border h-10 border-none px-5 py-2 text-base focus:border-2 focus:outline-none",r),...o})}export{u as I};
