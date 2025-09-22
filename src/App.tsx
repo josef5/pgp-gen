@@ -9,7 +9,7 @@ import NavBar from "./components/nav-bar";
 function App() {
   return (
     <HashRouter>
-      <div className="min-h-screen">
+      <div className="bg-background min-h-screen">
         <NavBar />
         <main>
           <Routes>

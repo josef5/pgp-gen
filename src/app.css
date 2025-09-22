@@ -38,6 +38,6 @@ select:-webkit-autofill:focus {
 @layer base {
   body {
     font-family: var(--font-sans);
-    @apply bg-background text-foreground;
+    @apply bg-background-secondary text-foreground;
   }
 }
