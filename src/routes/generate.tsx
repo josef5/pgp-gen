@@ -32,6 +32,9 @@ function Generate() {
     setGeneratedKey(null);
     setErrorMessage(null);
 
+    // Allow React to re-render and show loading state
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
     try {
       const keyPair = await openpgp.generateKey({
         userIds: [{ name, email }],
