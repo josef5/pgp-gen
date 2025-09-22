@@ -2,6 +2,7 @@ import Button from "@/components/button";
 import Input from "@/components/input";
 import Label from "@/components/label";
 import Textbox from "@/components/textbox";
+import { sleep } from "@/lib/utils";
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -33,7 +34,7 @@ function Generate() {
     setErrorMessage(null);
 
     // Allow React to re-render and show loading state
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await sleep(0);
 
     try {
       const keyPair = await openpgp.generateKey({

@@ -2,6 +2,7 @@ import Button from "@/components/button";
 import Label from "@/components/label";
 import Textarea from "@/components/textarea";
 import Textbox from "@/components/textbox";
+import { sleep } from "@/lib/utils";
 import * as openpgp from "openpgp";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -24,6 +25,9 @@ function Encrypt() {
     setEncryptedMessage(null);
     setErrorMessage(null);
     setIsEncrypting(true);
+
+    // Allow React to re-render and show loading state
+    await sleep(0);
 
     try {
       const publicKeyObj = await openpgp.key.readArmored(publicKey);
