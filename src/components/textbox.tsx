@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { useRef } from "react";
+import { useState } from "react";
 
 function Textbox({
   className,
@@ -12,8 +12,9 @@ function Textbox({
   children?: React.ReactNode;
   [key: string]: any;
 }) {
-  const copiedOverlayRef = useRef<HTMLDivElement>(null);
+  const [copyText, setCopyText] = useState<string | null>("copy");
   const text = String(children);
+  const COPIED_TIMEOUT_DURATION = 3000;
 
   return (
     <>
@@ -22,30 +23,27 @@ function Textbox({
           "bg-background-tertiary relative box-border break-words whitespace-pre-wrap focus:border-2 focus:outline-none",
           className,
         )}
-        onClick={() => {
-          if (text && isCopyable) {
-            navigator.clipboard.writeText(text);
-
-            if (copiedOverlayRef.current) {
-              copiedOverlayRef.current.style.opacity = "1";
-
-              setTimeout(() => {
-                if (copiedOverlayRef.current) {
-                  copiedOverlayRef.current.style.opacity = "0";
-                }
-              }, 1000);
-            }
-          }
-        }}
         {...props}
       >
         {/* Overlay for copy confirmation */}
         {isCopyable && (
-          <div
-            ref={copiedOverlayRef}
-            className="text-background-tertiary bg-foreground/75 absolute flex h-full w-full items-center justify-center text-2xl opacity-0 transition-opacity duration-300"
-          >
-            copied
+          <div className="text-background-tertiary pointer-events-none absolute flex h-full w-full items-start justify-end text-2xl transition-opacity duration-300">
+            <div
+              className="bg-foreground/25 hover:bg-foreground/70 pointer-events-auto cursor-pointer px-3 py-2 text-base"
+              onClick={() => {
+                if (text && isCopyable) {
+                  navigator.clipboard.writeText(text);
+
+                  setCopyText("copied");
+
+                  setTimeout(() => {
+                    setCopyText("copy");
+                  }, COPIED_TIMEOUT_DURATION);
+                }
+              }}
+            >
+              {copyText}
+            </div>
           </div>
         )}
         <div className="px-5 py-2 text-base">{children}</div>
